@@ -23,6 +23,16 @@
         * As opções do HTML select devem ser: Arial, Monaco e Bradley Hand
     -->
 
+    <!-- ISSUE 1 -->
+
+    <select id=fonte onchange="changeFont()">
+      <option value="valor0">Selecione a Fonte</option>
+      <option value="valor1">Arial</option>
+      <option value="valor2">Monaco</option>
+      <option value="valor3">Bradley Hand</option>
+    </select>
+
+
     <script>
       /**
        * Troca a cor do fundo da página
@@ -44,6 +54,36 @@
          * escolhido no no local *localStorage* sempre que o usuário selecionar
          * o tipo da fonte por meio do HTML select.
          */
+
+        /* ISSUE 2 */
+
+        let opfonte = document.querySelector("#fonte");
+          //console.log(opfonte);
+
+          let valor_opfonte = opfonte.value;
+          //console.log(valor_opfonte);
+
+          let texto_trocar = document.getElementById("text")
+
+          switch(valor_opfonte)
+            {
+              case "valor1":
+                console.log("ARIAL");
+                texto_trocar.style.fontFamily = "Arial";
+                break;
+
+              case "valor2":
+                console.log("MONACO");
+                texto_trocar.style.fontFamily = "Monaco";
+              break;
+
+              case "valor3":
+                console.log("BRADLEY HAND");
+                texto_trocar.style.fontFamily = "Bradley Hand";
+                break;
+                }
+          // ARMAZENANDO NO LOCALSTORAGE A FONTE
+          localStorage.setItem("text", texto_trocar.style.fontFamily);
       }
 
       /**
@@ -51,11 +91,19 @@
        */
       function load() {
         document.body.style.backgroundColor = localStorage.getItem("color");
+
         /**
          * 3 - Altere o método `load` para recuperar o nome da fonte do *localStorage* e
          * estilizar o texto `Web Storage`
          */
+
+         /* ISSUE 3 */
+         let texto_trocar = document.getElementById("text");
+         texto_trocar.style.fontFamily = localStorage.getItem("text");
+
       }
+
+
     </script>
   </body>
 </html>
